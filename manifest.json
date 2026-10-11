@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Variant & Sibling",
+  "version": "1.0.0",
+  "description": "Extract Amazon product variants and create sibling groups for Dropy",
+  "permissions": ["activeTab", "tabs", "storage", "downloads", "scripting"],
+  "host_permissions": ["*://www.amazon.com/*", "*://www.amazon.in/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.amazon.com/dp/*",
+        "*://www.amazon.com/*/dp/*",
+        "*://www.amazon.com/gp/product/*",
+        "*://www.amazon.in/dp/*",
+        "*://www.amazon.in/*/dp/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

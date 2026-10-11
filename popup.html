@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variant & Sibling</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <span class="logo-icon">VS</span>
+        <div>
+          <h1>Variant & Sibling</h1>
+          <p class="sub">Amazon variant grouper for Dropy</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="historyBtn" title="History">📂</button>
+        <button class="icon-btn" id="resetBtn" title="Reset">🔄</button>
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="section" id="uploadSection">
+      <div class="section-label">Load ASINs</div>
+
+      <div class="upload-zone" id="dropZone">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Drop file here or click to browse</div>
+        <div class="upload-hint">TXT · CSV · XLSX</div>
+        <input type="file" id="fileInput" accept=".txt,.csv,.xlsx,.xls" hidden multiple>
+      </div>
+
+      <div class="divider"><span>or paste</span></div>
+
+      <textarea id="pasteArea" class="paste-area" placeholder="Paste ASINs here — one per line or comma-separated&#10;&#10;B07YPX9N6X&#10;B0719WNNK4&#10;B0GCLGMVTN"></textarea>
+
+      <div class="asin-status" id="asinStatus" style="display:none">
+        <span class="asin-count" id="asinCount">0</span>
+        <span>ASINs loaded</span>
+        <button class="clear-btn" id="clearAsinsBtn">✕ Clear</button>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="section" id="settingsSection" style="display:none">
+      <div class="settings-row">
+        <label>Delay between ASINs</label>
+        <div class="delay-control">
+          <button class="delay-btn" onclick="adjustDelay(-500)">−</button>
+          <span id="delayVal">3.0s</span>
+          <button class="delay-btn" onclick="adjustDelay(500)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls" id="controlsSection">
+      <button class="btn btn-start" id="startBtn" disabled>
+        <span class="btn-icon">▶</span> Start
+      </button>
+      <button class="btn btn-pause" id="pauseBtn" style="display:none">
+        <span class="btn-icon">⏸</span> Pause
+      </button>
+      <button class="btn btn-resume" id="resumeBtn" style="display:none">
+        <span class="btn-icon">▶</span> Resume
+      </button>
+      <button class="btn btn-stop" id="stopBtn" style="display:none">
+        <span class="btn-icon">⏹</span> Stop
+      </button>
+    </div>
+
+    <!-- Progress -->
+    <div class="section" id="progressSection" style="display:none">
+      <div class="progress-header">
+        <span id="progressText">0 / 0</span>
+        <span id="etaText" class="eta"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-val" id="statGroups">0</span>
+          <span class="stat-label">Groups</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val stat-skip" id="statSkipped">0</span>
+          <span class="stat-label">Skipped</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val stat-solo" id="statSolo">0</span>
+          <span class="stat-label">Solo</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val stat-err" id="statErrors">0</span>
+          <span class="stat-label">Errors</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Log -->
+    <div class="section" id="logSection" style="display:none">
+      <div class="section-label">
+        Live Log
+        <button class="clear-log-btn" id="clearLogBtn">Clear</button>
+      </div>
+      <div class="log-container" id="logContainer"></div>
+    </div>
+
+    <!-- Output -->
+    <div class="section" id="outputSection" style="display:none">
+      <div class="section-label">Output</div>
+      <div class="output-summary" id="outputSummary"></div>
+      <div id="fileSummaryList"></div>
+      <div class="output-actions">
+        <button class="btn btn-copy" id="copyBtn">
+          📋 Copy CSV
+        </button>
+      </div>
+      <div class="csv-preview" id="csvPreview"></div>
+    </div>
+
+    <!-- History Panel (hidden by default) -->
+    <div class="section" id="historySection" style="display:none">
+      <div class="section-label">
+        Run History
+        <button class="clear-log-btn" id="clearHistoryBtn">Clear All</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </div>
+
+    <!-- Resume Banner -->
+    <div class="resume-banner" id="resumeBanner" style="display:none">
+      <div class="resume-text">
+        <strong>⚠ Incomplete run found</strong>
+        <span id="resumeInfo"></span>
+      </div>
+      <div class="resume-actions">
+        <button class="btn btn-resume" id="resumeBannerBtn">▶ Resume</button>
+        <button class="btn btn-stop" id="discardBtn" style="font-size:11px;padding:6px 10px">Discard</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="libs/xlsx.mini.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

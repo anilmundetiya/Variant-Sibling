@@ -1,0 +1,14 @@
+GroupID	ASIN	Label
+1	B07XJVNNM1	96 Count - Relief Caplet
+1	B001B24ZN4	32 Count - Relief Caplet
+1	B010VDVX1U	60 Count - Relief Caplet
+2	B005IHRKRG	32 Count (Pack of 1)
+2	B0009RF9KK	60 Count (Pack of 1)
+13	B09WP884JV	8.1 Fl Oz (Pack of 1)
+10	B0GSH3F217	Unscented
+6	B0DWMPG85D	324 Count - 324 Patches
+6	B0DWMPQ12V	180 Count - 180 Patches
+
+7	B00XMLNNZ8	132 Count, 6 Packs - Extra Heavy Overnight (Size 5) - 132.0
+7	B07QNZDWHN	30 Count - Extra Heavy Overnight (Size 5) - 30.0
+7	B07NLXKYWN	66 Count, 3 Packs - Extra Heavy Overnight (Size 5) - 66.0
